@@ -3,6 +3,7 @@ import logo from '../assets/logoElecton.png'
 import { FaRegUser, FaHeart, FaShoppingCart } from "react-icons/fa";
 
 import { Link } from 'react-router-dom'
+import { SignInButton, SignOutButton, SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
 function HeaderComponent() {
     return (
         <div className='  bg-bluePrimary '>
@@ -26,7 +27,17 @@ function HeaderComponent() {
                 <div className='flex items-center gap-4 md:gap-[30px] text-whitePrimary lg:ml-5'>
                     <div className='flex items-center justify-center gap-3 '>
                         <FaRegUser size={20} />
-                        Sign in
+                        <SignedOut>
+                            <SignInButton />
+                        </SignedOut>
+                        <SignedIn>
+                            <UserButton afterSignOutUrl='/'
+                                appearance={{
+                                    elements: {
+                                        avatarBox: 'w-[40px] h-[40px]'
+                                    }
+                                }} />
+                        </SignedIn>
                     </div>
                     <div className='flex items-center gap-3 '>
                         <div className='flex items-center gap-[5px] '>
