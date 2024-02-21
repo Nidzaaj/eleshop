@@ -3,10 +3,18 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import HomePage from './pages/HomePage.jsx'
 import { ClerkProvider } from '@clerk/clerk-react'
 import { Provider } from 'react-redux'
 import store from './store/store.js'
+
+//pages
+import HomePage from './pages/HomePage.jsx'
+import CatalogPage from './pages/CatalogPage.jsx'
+import BlogPage from './pages/BlogPage.jsx'
+import AllProductsPage from './pages/AllProductsPage.jsx'
+import AboutusPage from './pages/AboutusPage.jsx'
+import ProductDetailsPage from './pages/ProductDetailsPage.jsx'
+
 
 
 // Import your publishable key
@@ -25,6 +33,26 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />
+      },
+      {
+        path: '/catalog',
+        element: <CatalogPage />
+      },
+      {
+        path: '/blog',
+        element: <BlogPage />
+      },
+      {
+        path: '/allproducts',
+        element: <AllProductsPage />
+      },
+      {
+        path: '/aboutus',
+        element: <AboutusPage />
+      },
+      {
+        path: '/productDetails/:id',
+        element: <ProductDetailsPage />
       }
     ]
   }

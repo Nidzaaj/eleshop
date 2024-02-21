@@ -30,7 +30,7 @@ function HeroSection() {
         };
     }, []);
 
-    console.log(products);
+    // console.log(products);
 
     return (products.length > 0 &&
         <div className=' container mx-auto w-[70%]'>

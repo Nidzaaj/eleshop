@@ -30,7 +30,7 @@ function App() {
         setData(res.data.products)
         setLoading(true)
       })
-      .catch((err) => console.log('nisu stigli podaci'))
+      .catch((err) => console.log(err))
   }, [])
 
   useEffect(() => {
