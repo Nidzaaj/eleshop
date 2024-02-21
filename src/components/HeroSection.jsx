@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import canon from '../assets/canon89.png'
+// import canon from '../assets/canon89.png'
 import speaker from '../assets/2 1.png'
 import laptop from '../assets/5 1.png'
 import camera from '../assets/8 1.png'
@@ -32,8 +32,9 @@ function HeroSection() {
 
     console.log(products);
 
-    return (
+    return (products.length > 0 &&
         <div className=' container mx-auto w-[70%]'>
+
             <div className=' flex items-center justify-between '>
                 {/* left side */}
                 <div className=' flex flex-col gap-3'>

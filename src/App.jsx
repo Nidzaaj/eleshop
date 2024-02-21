@@ -30,7 +30,7 @@ function App() {
         setData(res.data.products)
         setLoading(true)
       })
-      .catch((err) => toast.error('nisu stigli podaci'))
+      .catch((err) => console.log('nisu stigli podaci'))
   }, [])
 
   useEffect(() => {
