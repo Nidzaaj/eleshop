@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 function ProductCardComponent({ item }) {
-    console.log(item);
+    // console.log(item);
     return (
         <div className='w-[300px] h-[340px] shadow hover:shadow-lg rounded-[20px] flex flex-col '>
             <div className=' overflow-hidden rounded-t-[20px]'>
