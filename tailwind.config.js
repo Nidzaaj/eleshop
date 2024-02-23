@@ -13,6 +13,7 @@ export default {
         orangePrimary: "#EDA415",
         greyPrimary: "#BABABA",
         greySecondary: "#A5A5A5",
+        greyTerciary: "#4A4A4A",
         textBlue: "#1B5A7D",
         textGrey: "#3A3A3A",
         whitePrimary: "#FFFFFF"
