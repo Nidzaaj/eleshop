@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import ProductService from '../services/productService'
 import { Rating } from '@mui/material'
 // react-icons
 import { FaCheck } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import { FaRegHeart } from "react-icons/fa";
+import { useDispatch } from 'react-redux';
+import { saveInCartHandler } from '../store/cartSlice';
+
 
 
 
@@ -25,9 +28,16 @@ function ProductDetailsPage() {
             .catch(err => console.log(err))
     }, [])
 
-    console.log(singleProduct);
+    // !fixme:
+    const dispatch = useDispatch();
 
-    //  FIXME: design, images, border active on small images
+    function handleProduct() {
+        dispatch(saveInCartHandler(singleProduct))
+    }
+
+    // console.log(singleProduct);
+
+
     return (
         isLoading &&
         <div className=' container mx-auto mt-[70px] mb-[50px] flex gap-[40px]'>
@@ -82,6 +92,13 @@ function ProductDetailsPage() {
                     </div>
                     <div className=' flex items-center gap-[20px]'>
                         <button className=' bg-orangePrimary text-whitePrimary rounded-[33px] py-[15px] px-[35px] font-semibold text-[18px] transition ease-in-out delay-150 hover:bg-bluePrimary'>Add to cart</button>
+
+
+                        {/* fixme: kdask */}
+                        <button className=' bg-orangePrimary text-whitePrimary rounded-[33px] py-[15px] px-[35px] font-semibold text-[18px] transition ease-in-out delay-150 hover:bg-bluePrimary' onClick={handleProduct}> <Link to={'/cartProductPage'}>Buy now</Link>
+                        </button>
+
+
                         <button className=' rounded-full w-[50px] h-[50px] bg-slate-300 flex items-center justify-center transition ease-in-out delay-150 hover:bg-slate-400 hover:text-orangePrimary'><FaRegHeart size={20} /></button>
                     </div>
                 </div>
