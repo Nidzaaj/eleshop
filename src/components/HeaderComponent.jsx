@@ -47,13 +47,17 @@ function HeaderComponent() {
                         Favorite
 
                     </div>
-                    <div className='flex gap-3 '>
-                        <div className='flex items-center gap-[5px] '>
-                            <FaShoppingCart size={20} />
-                            <span className=' bg-orangePrimary h-[17px] w-[17px] flex items-center justify-center rounded-full text-[10px] font-normal'>0</span>
+                    <Link to={'/cartProductPage'}>
+                        <div className='flex gap-3 '>
+                            <div className='flex items-center gap-[5px] '>
+                                <FaShoppingCart size={20} />
+                                <span className=' bg-orangePrimary h-[17px] w-[17px] flex items-center justify-center rounded-full text-[10px] font-normal'>0</span>
+                            </div>
+                            Cart
                         </div>
-                        Cart
-                    </div>
+                    </Link>
+
+
 
                 </div>
             </div>
