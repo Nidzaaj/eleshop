@@ -1,10 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RxCross2 } from "react-icons/rx";
+import { removeProductHandler, setPriceHandler } from '../store/cartSlice';
 
 function CartProductPage() {
 
-    const { cart } = useSelector(state => state.cartStore)
+    const { cart, totalPrice } = useSelector(state => state.cartStore)
+    const dispatch = useDispatch();
 
     console.log(cart);
 
@@ -27,9 +29,17 @@ function CartProductPage() {
                             <div className=' flex items-center justify-center'><img src={item.thumbnail} alt={item.title} className='rounded-[8px]' /></div>
                             <div className=' flex items-center justify-center'>{item.title}</div>
                             <div className=' flex items-center justify-center'>${item.price}</div>
-                            <div className=' flex items-center justify-center'>{item.count}</div>
+                            <div className=' flex items-center justify-center'>
+                                <div className=' flex items-center justify-center'>
+                                    <button className='w-[30px] h-[30px] bg-slate-300 border border-greyPrimary hover:bg-slate-400' onClick={() => dispatch(setPriceHandler({ increment: -1, index }))}
+                                    >-</button>
+                                    <span className=' w-[40px] h-[30px] bg-slate-300 text-center'>{item.count}</span>
+                                    <button className='w-[30px] h-[30px] bg-slate-300 border border-greyPrimary transition ease-in-out delay-150  hover:bg-slate-400' onClick={() => dispatch(setPriceHandler({ increment: 1, index }))}
+                                    >+</button>
+                                </div>
+                            </div>
                             <div className=' flex items-center justify-center'>${item.price * item.count}</div>
-                            <div className=' flex items-center justify-center'><button className=' rounded-full border border-red-600 p-[1px] text-red-600 ' ><RxCross2 size={18} /></button></div>
+                            <div className=' flex items-center justify-center'><button className=' rounded-full border border-red-600 p-[1px] text-red-600 ' onClick={() => dispatch(removeProductHandler(index))} ><RxCross2 size={18} /></button></div>
                         </div>)
                 })}
             </div>
@@ -38,7 +48,7 @@ function CartProductPage() {
                 <div className=' bg-blueSecondary h-[55px] flex items-center justify-center'>Cart total</div>
                 <div className=' p-[20px] flex flex-col justify-center gap-8'>
                     <div>
-                        <div>Subtotal </div>
+                        <div className=' flex items-center justify-between'> <p>Subtotal</p> <span>{totalPrice}</span></div>
                         <div className=' h-[1px] bg-slate-300'></div>
                     </div>
                     <div className=' flex items-center'>

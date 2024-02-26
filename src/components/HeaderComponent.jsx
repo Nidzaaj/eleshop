@@ -4,7 +4,10 @@ import { FaRegUser, FaHeart, FaShoppingCart } from "react-icons/fa";
 
 import { Link } from 'react-router-dom'
 import { SignInButton, SignOutButton, SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
+import { useSelector } from 'react-redux';
 function HeaderComponent() {
+    const { totalProducts } = useSelector(state => state.cartStore);
+
     return (
         <div className='  bg-bluePrimary '>
             <div className=' container mx-auto lg:h-[100px] flex flex-col items-center justify-between p-3 gap-4 lg:gap-[30px]  lg:p-0 lg:flex-row'>
@@ -51,7 +54,7 @@ function HeaderComponent() {
                         <div className='flex gap-3 '>
                             <div className='flex items-center gap-[5px] '>
                                 <FaShoppingCart size={20} />
-                                <span className=' bg-orangePrimary h-[17px] w-[17px] flex items-center justify-center rounded-full text-[10px] font-normal'>0</span>
+                                <span className=' bg-orangePrimary h-[17px] w-[17px] flex items-center justify-center rounded-full text-[10px] font-normal'>{totalProducts}</span>
                             </div>
                             Cart
                         </div>
