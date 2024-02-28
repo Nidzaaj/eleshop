@@ -21,7 +21,7 @@ const cartSlice = createSlice({
             })
 
             if (findIndex === null) {
-                copyArray.push({ ...action.payload, count: 1, cartTotal: action.payload.price })  //*fix ako postoji count uzmi njega a ako ne neka bude 1
+                copyArray.push({ ...action.payload, count: 1, cartTotal: action.payload.price })
                 state.totalPrice += action.payload.price;
                 state.totalProducts++;
             } else {

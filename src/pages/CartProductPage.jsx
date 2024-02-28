@@ -25,8 +25,8 @@ function CartProductPage() {
 
                 {cart.map((item, index) => {
                     return (
-                        <div key={index} className=' grid grid-cols-6 gap-2  bg-gray-100 text-textBlue font-semibold'>
-                            <div className=' flex items-center justify-center'><img src={item.thumbnail} alt={item.title} className='rounded-[8px]' /></div>
+                        <div key={index} className=' grid grid-cols-6 gap-2 py-[10px] bg-gray-100 text-textBlue font-semibold'>
+                            <div className=' flex items-center justify-center'><img src={item.thumbnail} alt={item.title} className='rounded-[8px] h-[80px] w-[100px]' /></div>
                             <div className=' flex items-center justify-center'>{item.title}</div>
                             <div className=' flex items-center justify-center'>${item.price}</div>
                             <div className=' flex items-center justify-center'>

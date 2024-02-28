@@ -17,7 +17,6 @@ function ProductDetailsPage() {
     const [singleProduct, setSingleProduct] = useState({})
     const [isLoading, setIsLoading] = useState(false)
     const [currentImage, setCurrentImage] = useState(0)
-    // const [count, setCount] = useState(1) //! fix
     const { id } = useParams()
     const dispatch = useDispatch();
     useEffect(() => {
@@ -35,15 +34,6 @@ function ProductDetailsPage() {
         dispatch(saveInCartHandler(singleProduct))
     }
 
-    // function addProduct() {
-    //     setCount(count + 1)
-    //     setSingleProduct({ ...singleProduct, count })    //!fix
-    // }
-
-    // function delProduct() {
-    //     (count > 1) && setCount(count - 1)
-    //     setSingleProduct({ ...singleProduct, count }) //!fix
-    // }
 
     // console.log(singleProduct);
 
@@ -95,15 +85,15 @@ function ProductDetailsPage() {
                     <span>Total Price: </span>
                     <div className=' flex items-center gap-2'>Quantity:
                         <div className=' flex items-center'>
-                            <button className='w-[30px] h-[30px] bg-slate-300 border border-greyPrimary hover:bg-slate-400' //onClick={() => { delProduct() }}
+                            <button className='w-[30px] h-[30px] bg-slate-300 border border-greyPrimary hover:bg-slate-400'
                             >-</button>
                             <span className=' w-[40px] h-[30px] bg-slate-300 text-center'> 1</span>
-                            <button className='w-[30px] h-[30px] bg-slate-300 border border-greyPrimary transition ease-in-out delay-150  hover:bg-slate-400' // onClick={() => { addProduct() }} //!fix
+                            <button className='w-[30px] h-[30px] bg-slate-300 border border-greyPrimary transition ease-in-out delay-150  hover:bg-slate-400'
                             >+</button>
                         </div>
                     </div>
                     <div className=' flex items-center gap-[20px]'>
-                        <button className=' bg-orangePrimary text-whitePrimary rounded-[33px] py-[15px] px-[35px] font-semibold text-[18px] transition ease-in-out delay-150 hover:bg-bluePrimary'>Add to cart</button>
+                        <button className=' bg-orangePrimary text-whitePrimary rounded-[33px] py-[15px] px-[35px] font-semibold text-[18px] transition ease-in-out delay-150 hover:bg-bluePrimary' onClick={handleProduct} >Add to cart</button>
 
 
                         {/* fixme: kdask */}

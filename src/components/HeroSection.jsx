@@ -12,12 +12,13 @@ import { useSelector } from 'react-redux'
 function HeroSection() {
 
     const [selectedCircle, setSelectedCircle] = useState(1);
-
+    const [nextSlide, setNextSlide] = useState(1)
     //producti iz reduxa
     const { products } = useSelector((state) => state.productsStore)
 
     // func za hero slider
     const handleCircleIndex = (circleIndex) => { setSelectedCircle(circleIndex) };
+    const handleSlideChange = () => { setNextSlide() }
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -107,7 +108,7 @@ function HeroSection() {
                     </div>
                 </div>
 
-                <div className=' absolute rounded-full bg-gray-200 w-[37px] h-[37px] flex items-center justify-center top-[40%] left-[-3%] cursor-pointer hover:bg-slate-300'><IoIosArrowBack />
+                <div className=' absolute rounded-full bg-gray-200 w-[37px] h-[37px] flex items-center justify-center top-[40%] left-[-3%] cursor-pointer hover:bg-slate-300' ><IoIosArrowBack />
                 </div>
                 <div className=' absolute rounded-full bg-gray-200 w-[37px] h-[37px] flex items-center justify-center top-[40%] right-[-3%] cursor-pointer hover:bg-slate-300'><IoIosArrowForward />
                 </div>

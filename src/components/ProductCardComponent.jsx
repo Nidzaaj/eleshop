@@ -1,8 +1,14 @@
 import { Rating } from '@mui/material';
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { saveInCartHandler } from '../store/cartSlice';
 
 function ProductCardComponent({ item }) {
+    const dispatch = useDispatch()
+    function handleProduct(item) {
+        dispatch(saveInCartHandler(item))
+    }
     // console.log(item);
     return (
         <div className='w-[300px] h-[340px] shadow hover:shadow-lg rounded-[20px] flex flex-col '>
@@ -18,8 +24,11 @@ function ProductCardComponent({ item }) {
 
                 <div className=' flex items-center justify-between'>
                     <Link to={`/productDetails/${item.id}`} className='border-2 border-greyPrimary px-3 rounded-xl '>Details</Link>
-                    <button className=' border-2 border-orangePrimary bg-orangePrimary px-3 rounded-xl text-whitePrimary font-bold'>Buy now</button>
-                    <button className='border-2 border-bluePrimary px-3 rounded-xl '>Add to cart</button>
+                    <Link to={'/cartProductPage'}>
+                        <button className=' border-2 border-orangePrimary bg-orangePrimary px-3 rounded-xl text-whitePrimary font-bold' onClick={() => { handleProduct(item) }}>Buy now</button>
+                    </Link>
+
+                    <button className='border-2 border-bluePrimary px-3 rounded-xl' onClick={() => { handleProduct(item) }}>Add to cart</button>
                 </div>
             </div>
         </div>
