@@ -14,6 +14,8 @@ import { saveInCartHandler } from '../store/cartSlice';
 
 
 function ProductDetailsPage() {
+    const [addToCartProduct, setAddToCartProduct] = useState({})
+    const [quantitys, setQuantitys] = useState(1)
     const [singleProduct, setSingleProduct] = useState({})
     const [isLoading, setIsLoading] = useState(false)
     const [currentImage, setCurrentImage] = useState(0)
@@ -27,21 +29,33 @@ function ProductDetailsPage() {
             })
             .catch(err => console.log(err))
     }, [])
+    function quantityHandlerIncrement() {
+        setQuantitys(prevQuantity => prevQuantity + 1);
+        setAddToCartProduct({ ...singleProduct, count: quantitys + 1 }); // Ažuriramo addToCartProduct i quantitys
+        setSingleProduct({ ...singleProduct, count: quantitys + 1 }); // Ažuriramo i singleProduct
+    }
 
-
+    function quantityHandlerDecrement() {
+        if (quantitys > 1) {
+            setQuantitys(prevQuantity => prevQuantity - 1);
+            setAddToCartProduct({ ...singleProduct, count: quantitys - 1 }); // Ažuriramo addToCartProduct i quantitys
+            setSingleProduct({ ...singleProduct, count: quantitys - 1 }); // Ažuriramo i singleProduct
+        }
+    }
 
     function handleProduct() {
-        dispatch(saveInCartHandler(singleProduct))
+        dispatch(saveInCartHandler(singleProduct));
     }
 
 
-    // console.log(singleProduct);
+    // console.log(addToCartProduct);
 
 
     return (
         isLoading &&
-        <div className=' container mx-auto mt-[70px] mb-[50px] flex gap-[40px]'>
 
+        <div className=' container mx-auto mt-[70px] mb-[50px] flex gap-[40px]'>
+            {console.log(singleProduct)}
             {/* left side */}
             <div className=' flex flex-col items-center gap-[40px] w-[50%]'>
 
@@ -85,19 +99,19 @@ function ProductDetailsPage() {
                     <span>Total Price: </span>
                     <div className=' flex items-center gap-2'>Quantity:
                         <div className=' flex items-center'>
-                            <button className='w-[30px] h-[30px] bg-slate-300 border border-greyPrimary hover:bg-slate-400'
+                            <button className='w-[30px] h-[30px] bg-slate-300 border border-greyPrimary hover:bg-slate-400' onClick={quantityHandlerDecrement}
                             >-</button>
-                            <span className=' w-[40px] h-[30px] bg-slate-300 text-center'> 1</span>
-                            <button className='w-[30px] h-[30px] bg-slate-300 border border-greyPrimary transition ease-in-out delay-150  hover:bg-slate-400'
+                            <span className=' w-[40px] h-[30px] bg-slate-300 text-center'> {quantitys}</span>
+                            <button className='w-[30px] h-[30px] bg-slate-300 border border-greyPrimary transition ease-in-out delay-150  hover:bg-slate-400' onClick={quantityHandlerIncrement}
                             >+</button>
                         </div>
                     </div>
                     <div className=' flex items-center gap-[20px]'>
-                        <button className=' bg-orangePrimary text-whitePrimary rounded-[33px] py-[15px] px-[35px] font-semibold text-[18px] transition ease-in-out delay-150 hover:bg-bluePrimary' onClick={handleProduct} >Add to cart</button>
+                        <button className=' bg-orangePrimary text-whitePrimary rounded-[33px] py-[15px] px-[35px] font-semibold text-[18px] transition ease-in-out delay-150 hover:bg-bluePrimary' onClick={() => { handleProduct() }} >Add to cart</button>
 
 
                         {/* fixme: kdask */}
-                        <button className=' bg-orangePrimary text-whitePrimary rounded-[33px] py-[15px] px-[35px] font-semibold text-[18px] transition ease-in-out delay-150 hover:bg-bluePrimary' onClick={handleProduct}> <Link to={'/cartProductPage'}>Buy now</Link>
+                        <button className=' bg-orangePrimary text-whitePrimary rounded-[33px] py-[15px] px-[35px] font-semibold text-[18px] transition ease-in-out delay-150 hover:bg-bluePrimary' onClick={() => { handleProduct() }}> <Link to={'/cartProductPage'}>Buy now</Link>
                         </button>
 
 

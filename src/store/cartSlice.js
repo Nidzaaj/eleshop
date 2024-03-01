@@ -9,7 +9,7 @@ const cartSlice = createSlice({
     },
     reducers: {
         saveInCartHandler: (state, action) => {
-            console.log(action.payload);
+            // console.log(action.payload);
             let copyArray = [...state.cart];
             let findIndex = null;
 
@@ -21,7 +21,8 @@ const cartSlice = createSlice({
             })
 
             if (findIndex === null) {
-                copyArray.push({ ...action.payload, count: 1, cartTotal: action.payload.price })
+                let count = (action.payload.count) ? action.payload.count : (+1)
+                copyArray.push({ ...action.payload, count, cartTotal: action.payload.price })
                 state.totalPrice += action.payload.price;
                 state.totalProducts++;
             } else {
