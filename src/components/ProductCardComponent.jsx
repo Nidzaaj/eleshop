@@ -3,11 +3,13 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { saveInCartHandler } from '../store/cartSlice';
+import { toast } from 'react-toastify';
 
 function ProductCardComponent({ item }) {
     const dispatch = useDispatch()
     function handleProduct(item) {
         dispatch(saveInCartHandler(item))
+        toast.success('Added to cart!')
     }
     // console.log(item);
     return (

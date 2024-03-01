@@ -8,6 +8,7 @@ import { RxCross2 } from "react-icons/rx";
 import { FaRegHeart } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { saveInCartHandler } from '../store/cartSlice';
+import { toast } from 'react-toastify';
 
 
 
@@ -45,6 +46,7 @@ function ProductDetailsPage() {
 
     function handleProduct() {
         dispatch(saveInCartHandler(singleProduct));
+        toast.success('Added to cart!')
     }
 
 

@@ -9,6 +9,10 @@ import ProductService from './services/productService'
 import { useDispatch } from 'react-redux'
 import { getAllProducts } from './store/productsSlice'
 
+// toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 axios.defaults.baseURL = 'https://dummyjson.com';
@@ -29,8 +33,10 @@ function App() {
       .then((res) => {
         setData(res.data.products)
         setLoading(true)
+        toast.success('The data has arrived')
       })
       .catch((err) => console.log(err))
+    toast.error('No data arrived')
   }, [])
 
   useEffect(() => {
@@ -46,6 +52,7 @@ function App() {
         <HeaderComponent />
         <HeaderNavbarMenu />
         <Outlet />
+        <ToastContainer />
       </div>) :
         (<h1>Loading...</h1>)}
 

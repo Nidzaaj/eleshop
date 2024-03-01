@@ -57,6 +57,8 @@ const cartSlice = createSlice({
     }
 })
 
+//! fix subtotal//
+
 function subTotal(arrayCart) {
     return arrayCart.reduce((acc, current) => {
         return acc + current.cartTotal;
