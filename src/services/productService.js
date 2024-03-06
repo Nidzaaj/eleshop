@@ -1,7 +1,8 @@
 import axios from "axios";
 class ProductService {
     static getAllProducts = () => axios.get('/products');
-    static getSingleProduct = (id) => axios.get(`/products/${id}`)
+    static getAllCategories = () => axios.get('/products/categories');
+    static getSingleProduct = (id) => axios.get(`/products/${id}`);
 }
 
 

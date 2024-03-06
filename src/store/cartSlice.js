@@ -45,7 +45,7 @@ const cartSlice = createSlice({
             let { index } = action.payload;
             let copyArray = [...state.cart];
 
-            state.totalPrice -= copyArray[index].cartTotal;
+            state.totalPrice -= copyArray[action.payload].price;
             copyArray.splice(index, 1);
             state.totalProducts--;
 

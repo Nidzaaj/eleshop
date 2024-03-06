@@ -15,6 +15,7 @@ import AllProductsPage from './pages/AllProductsPage.jsx'
 import AboutusPage from './pages/AboutusPage.jsx'
 import ProductDetailsPage from './pages/ProductDetailsPage.jsx'
 import CartProductPage from './pages/CartProductPage.jsx'
+import CategoryPage from './pages/CategoryPage.jsx'
 
 
 
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: '/cartProductPage',
         element: <CartProductPage />
+      },
+      {
+        path: '/categoryPage',
+        element: <CategoryPage />
       }
     ]
   }
