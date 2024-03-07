@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { FaAngleDown } from "react-icons/fa6";
-
 import { Link, NavLink } from 'react-router-dom'
 import ProductService from '../services/productService';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { getAllCategories } from '../store/categorySlice';
 
-
 function HeaderNavbarMenu() {
     const [allCategories, setAllCategories] = useState([])
     const [categoriesToggler, setAllCategoriesToggler] = useState(false)
     const dispatch = useDispatch();
-
-
-
-
 
     const showAllCategory = () => {
         setAllCategoriesToggler(!categoriesToggler)
@@ -65,8 +59,6 @@ function HeaderNavbarMenu() {
                 </div>
                 :
                 <></>}
-
-
         </div>
     )
 }
