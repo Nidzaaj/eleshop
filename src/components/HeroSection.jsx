@@ -19,15 +19,15 @@ import { toast } from 'react-toastify';
 function HeroSection() {
 
     const [selectedCircle, setSelectedCircle] = useState(1);
-    const [nextSlide, setNextSlide] = useState(1)
-    const [currentSlide, setCurrentSlide] = useState(0);
+    // const [nextSlide, setNextSlide] = useState(1)
+    // const [currentSlide, setCurrentSlide] = useState(0);
     const dispatch = useDispatch()
     //producti iz reduxa
     const { products } = useSelector((state) => state.productsStore)
 
     // func za hero slider
     const handleCircleIndex = (circleIndex) => { setSelectedCircle(circleIndex) };
-    const handleSlideChange = () => { setNextSlide(nextSlide += 1) }
+    // const handleSlideChange = () => { setNextSlide(nextSlide += 1) }
 
     // new arr with low price
     let discountProducts = products.filter(products => products.discountPercentage > 17)

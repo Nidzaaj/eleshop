@@ -42,7 +42,8 @@ const cartSlice = createSlice({
         },
 
         removeProductHandler: (state, action) => {
-            let { index } = action.payload;
+            console.log(action.payload);
+            let index = action.payload;
             let copyArray = [...state.cart];
 
             state.totalPrice -= copyArray[action.payload].price * copyArray[action.payload].count || copyArray[action.payload].price;
